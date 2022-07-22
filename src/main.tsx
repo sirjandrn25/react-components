@@ -4,6 +4,7 @@ import App from "./App";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChartPage from "./pages/chart";
+import LineChart from "./pages/chart/lineChart.module";
 
 const rootNode = document.getElementById("root");
 
@@ -11,7 +12,9 @@ ReactDOM.render(
 	<BrowserRouter>
 		<Routes>
 			<Route path="/" element={<App />}>
-				<Route path="/chart" element={<ChartPage />} />
+				<Route path="/chart" element={<ChartPage />}>
+					<Route index element={<LineChart />} />
+				</Route>
 			</Route>
 		</Routes>
 	</BrowserRouter>,

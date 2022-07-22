@@ -6,6 +6,7 @@ import {
 	Line,
 	Tooltip,
 	ResponsiveContainer,
+	CartesianGrid,
 } from "recharts";
 
 type chartMarginType = {
@@ -39,7 +40,7 @@ export type lineChartProps = {
 const LineChartFigure = (props: lineChartProps) => {
 	const { data, line, margin, xaxis, yaxis, tooltip } = props;
 	return (
-		<ResponsiveContainer width="100%" height="100%">
+		<ResponsiveContainer width="80%" height="100%">
 			<LineChart
 				data={data}
 				margin={{
@@ -67,6 +68,7 @@ const LineChartFigure = (props: lineChartProps) => {
 					domain={[100, 2000]}
 					stroke={yaxis.color ? yaxis.color : "#0099cc"}
 				/>
+				<CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
 				{tooltip !== false && <Tooltip />}
 			</LineChart>
 		</ResponsiveContainer>

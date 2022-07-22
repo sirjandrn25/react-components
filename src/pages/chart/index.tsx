@@ -1,43 +1,24 @@
 import React from "react";
-import LineChartFigure from "../../Components/Chart/lineChart.component";
-import { getRandomNumberBetweenRange } from "../../Utils/math.utils";
-import { lineChartProps } from "../../Components/Chart/lineChart.component";
+import { Link, Outlet } from "react-router-dom";
 
-const generateDate = (i: number) => {
-	return new Date(`${2022}-${10}-${i}`).toDateString();
-};
-
-const generateRandomData = () => {
-	let data_arr = [];
-	for (let i = 1; i <= 100; i++) {
-		const data = {
-			date: `day ${i}`,
-			amount: getRandomNumberBetweenRange(500, 1500),
-		};
-		data_arr.push(data);
-	}
-
-	return data_arr;
-};
-
-const data = generateRandomData();
-
-export const Chart = () => {
-	const prop_list: lineChartProps = {
-		data: data,
-		line: {
-			datakey: "amount",
-		},
-		xaxis: {
-			dataKey: "date",
-		},
-		yaxis: {
-			dataKey: "amount",
-		},
-	};
+const Chart = () => {
 	return (
-		<div className="h-screen w-screen flex justify-center items-center">
-			<LineChartFigure {...prop_list} />
+		<div className="h-screen w-screen  flex flex-row ">
+			<div className="h-full w-[280px] bg-base-200">
+				<ul className="w-full p-3">
+					<li className="px-5 py-3">
+						<Link to="/chart">Line chart</Link>
+					</li>
+					<li className="px-5 py-3">
+						<Link to="/chart/bar">Bar chart</Link>
+					</li>
+				</ul>
+			</div>
+			<div className="w-full h-full">
+				<div className="h-[500px] w-[600px]">
+					<Outlet />
+				</div>
+			</div>
 		</div>
 	);
 };
